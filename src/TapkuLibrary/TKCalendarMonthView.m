@@ -908,16 +908,15 @@ static NSNumberFormatter *numberFormatter = nil;
 - (UIView *) topBackground{
 	if(_topBackground) return _topBackground;
 	
-	TKGradientView *gradient = [[TKGradientView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOP_BAR_HEIGHT)];
-	gradient.colors = @[[UIColor colorWithHex:0xf4f4f5],[UIColor colorWithHex:0xccccd1]];
-	gradient.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 44, gradient.bounds.size.width, 1)];
-	line.backgroundColor = [UIColor colorWithHex:0xaaaeb6];
+    UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOP_BAR_HEIGHT)];
+    header.backgroundColor = [UIColor colorWithHex:0xf7f7f7];
+	UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 44, header.bounds.size.width, 1)];
+	line.backgroundColor = [UIColor colorWithHex:0xdadada];
 	line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	[gradient addSubview:line];
+	[header addSubview:line];
 	
-	gradient.userInteractionEnabled = YES;
-	_topBackground = gradient;
+	header.userInteractionEnabled = YES;
+	_topBackground = header;
 	return _topBackground;
 }
 - (UILabel *) monthYear{
@@ -926,7 +925,7 @@ static NSNumberFormatter *numberFormatter = nil;
 	_monthYear = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, VIEW_WIDTH, 36), 40, 6)];
 	_monthYear.textAlignment = NSTextAlignmentCenter;
 	_monthYear.backgroundColor = [UIColor clearColor];
-	_monthYear.font = [UIFont boldSystemFontOfSize:22];
+	_monthYear.font = [UIFont systemFontOfSize:20];
 	_monthYear.textColor = gradientColor;
 	return _monthYear;
 }
@@ -939,6 +938,7 @@ static NSNumberFormatter *numberFormatter = nil;
 	_leftArrow.accessibilityLabel = @"Previous Month";
 	[_leftArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
 	[_leftArrow setImage:[UIImage imageNamedTK:@"calendar/calendar_left_arrow"] forState:0];
+    
 	return _leftArrow;
 }
 - (UIButton *) rightArrow{
