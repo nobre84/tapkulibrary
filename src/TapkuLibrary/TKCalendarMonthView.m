@@ -391,7 +391,7 @@ static NSNumberFormatter *numberFormatter = nil;
 	
 	selectedDay = day;
 	selectedPortion = 1;
-	self.currentDay.font = [UIFont systemFontOfSize:DATE_FONT_SIZE];
+	self.currentDay.font = [UIFont boldSystemFontOfSize:DATE_FONT_SIZE];
 
 	
 	BOOL hasDot = NO;
@@ -488,7 +488,7 @@ static NSNumberFormatter *numberFormatter = nil;
 		day = day - daysInMonth;
 	}
 	
-	self.currentDay.font = [UIFont systemFontOfSize:DATE_FONT_SIZE];
+	self.currentDay.font = [UIFont boldSystemFontOfSize:DATE_FONT_SIZE];
 	self.currentDay.hidden = NO;
 	self.dot.hidden = NO;
 	
