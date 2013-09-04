@@ -1106,6 +1106,10 @@ static NSNumberFormatter *numberFormatter = nil;
 	return ret;
 }
 - (void) reloadData{
+	if (self.currentTile == nil) {
+		// Nothing here to reload yet
+		return;
+	}
 	
 	NSDate *d = self.currentTile.dateSelected;
 	[self.currentTile removeFromSuperview];
