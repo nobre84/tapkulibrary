@@ -649,25 +649,25 @@ static NSNumberFormatter *numberFormatter = nil;
 	sund.timeZone = self.timeZone;
 	
 	
-	NSString * sun = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
+	NSString * sun = [[dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]] substringToIndex:1];
 
 	sund.day = 6;
-	NSString *mon = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
+	NSString *mon = [[dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]] substringToIndex:1];
 	
 	sund.day = 7;
-	NSString *tue = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
+	NSString *tue = [[dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]] substringToIndex:1];
 	
 	sund.day = 8;
-	NSString *wed = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
+	NSString *wed = [[dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]] substringToIndex:1];
 	
 	sund.day = 9;
-	NSString *thu = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
+	NSString *thu = [[dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]] substringToIndex:1];
 	
 	sund.day = 10;
-	NSString *fri = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
+	NSString *fri = [[dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]] substringToIndex:1];
 	
 	sund.day = 11;
-	NSString *sat = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
+	NSString *sat = [[dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]] substringToIndex:1];
 	
 	NSArray *ar;
 	if(self.sunday) ar = @[sun,mon,tue,wed,thu,fri,sat];
@@ -679,19 +679,21 @@ static NSNumberFormatter *numberFormatter = nil;
 		[self addSubview:label];
         
         // Added Accessibility Labels
-        if ([s isEqualToString:@"Sun"]) {
+        // Don't use isEqualToString since Sun and Sat are both "S"
+        // - it's fine, since we're looping over an array of string references
+        if (s == sun) {
             label.accessibilityLabel = @"Sunday";
-        } else if ([s isEqualToString:@"Mon"]) {
+        } else if (s == mon) {
             label.accessibilityLabel = @"Monday";
-        } else if ([s isEqualToString:@"Tue"]) {
+        } else if (s == tue) {
             label.accessibilityLabel = @"Tuesday";
-        } else if ([s isEqualToString:@"Wed"]) {
+        } else if (s == wed) {
             label.accessibilityLabel = @"Wednesday";
-        } else if ([s isEqualToString:@"Thu"]) {
+        } else if (s == thu) {
             label.accessibilityLabel = @"Thursday";
-        } else if ([s isEqualToString:@"Fri"]) {
+        } else if (s == fri) {
             label.accessibilityLabel = @"Friday";
-        } else if ([s isEqualToString:@"Sat"]) {
+        } else if (s == sat) {
             label.accessibilityLabel = @"Saturday";
         }
         
