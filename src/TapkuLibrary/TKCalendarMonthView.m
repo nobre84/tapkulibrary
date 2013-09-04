@@ -140,6 +140,9 @@ static NSNumberFormatter *numberFormatter = nil;
 	
 	NSDate *firstDate, *lastDate;
 	
+	if (date == nil) {
+		date = [NSDate date];
+	}	
 	NSDateComponents *info = [date dateComponentsWithTimeZone:timeZone];
 	
 	info.day = 1;
