@@ -93,6 +93,8 @@
  */
 - (void) animateToNextOrPreviousMonth:(BOOL)next;
 
+/** Set the tint colour to use for user interface elements */
++ (UIColor*) setImageTintColour:(UIColor*)color;
 
 @end
 
